@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="645.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ordercontroller.OrderFormController">
+   <children>
+      <Label alignment="CENTER" layoutX="317.0" layoutY="48.0" prefHeight="35.0" prefWidth="272.0" text="Order Management">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="orderid" layoutX="182.0" layoutY="107.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="customerid" layoutX="567.0" layoutY="107.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="email" layoutX="567.0" layoutY="212.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="itemid" layoutX="182.0" layoutY="142.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="name" layoutX="567.0" layoutY="142.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="quantity" layoutX="182.0" layoutY="176.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="discount" layoutX="182.0" layoutY="247.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="address" layoutX="567.0" layoutY="176.0" prefHeight="26.0" prefWidth="215.0" />
+      <Label layoutX="67.0" layoutY="144.0" text="Item ID">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="448.0" layoutY="109.0" text="Customer ID">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="452.0" layoutY="144.0" text="Name">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="452.0" layoutY="178.0" text="Address">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="453.0" layoutY="214.0" text="Email">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="178.0" text="Quantity">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="214.0" text="Date">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="249.0" text="Discount">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="109.0" text="Order ID">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="790.0" layoutY="107.0" mnemonicParsing="false" onAction="#searchCustomer" prefHeight="26.0" prefWidth="78.0" text="SEARCH" />
+      <TableView fx:id="tblview" layoutX="216.0" layoutY="323.0" prefHeight="293.0" prefWidth="474.0">
+        <columns>
+          <TableColumn fx:id="colorderid" prefWidth="123.99993896484375" text="Order ID" />
+          <TableColumn fx:id="colcustomerid" prefWidth="123.2000732421875" text="Customer ID" />
+            <TableColumn fx:id="colorderdate" prefWidth="118.39999389648438" text="Order Date" />
+            <TableColumn fx:id="coltotal" prefWidth="111.20001220703125" text="Total" />
+        </columns>
+      </TableView>
+      <Button layoutX="689.0" layoutY="273.0" mnemonicParsing="false" onAction="#clearOrder" prefHeight="26.0" prefWidth="178.0" text="CLEAR" />
+      <Button layoutX="467.0" layoutY="273.0" mnemonicParsing="false" onAction="#addOrder" prefHeight="26.0" prefWidth="198.0" text="ADD" />
+      <DatePicker fx:id="date" layoutX="182.0" layoutY="212.0" prefHeight="26.0" prefWidth="215.0" />
+   </children>
+</AnchorPane>
