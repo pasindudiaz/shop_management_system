@@ -17,7 +17,7 @@ public class CustomerController implements CustomerServiceController{
     public void addCustomer(Customer customer){
         try {
             Connection conn = DBConnection.getInstance().getConnection();
-            PreparedStatement pst = conn.prepareStatement("insert into customer values(?,?,?,?)");
+            PreparedStatement pst = conn.prepareStatement("insert into customer values(?,?,?,?);");
             pst.setObject(1,customer.getCusId());
             pst.setObject(2,customer.getName());
             pst.setObject(3,customer.getAddress());
