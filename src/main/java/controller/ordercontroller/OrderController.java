@@ -15,7 +15,6 @@ import java.sql.SQLException;
 
 public class OrderController implements OrderServiceController {
     ObservableList<Order> OrderList = FXCollections.observableArrayList();
-    ObservableList<OrderDetails> OrderDetailList = FXCollections.observableArrayList();
 
     @Override
     public Customer searchCustomer(String cusid) {

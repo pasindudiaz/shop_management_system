@@ -3,9 +3,7 @@ package controller.orderdetailscontroller;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import lombok.SneakyThrows;
 import model.OrderDetails;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
