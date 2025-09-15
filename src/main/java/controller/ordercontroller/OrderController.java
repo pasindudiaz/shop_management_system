@@ -64,14 +64,16 @@ public class OrderController implements OrderServiceController {
     }
     ///  //////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public void addOrder(Order order){
+    public void addOrder( String orderid,String customerid, String date,String itemid,String quantity,String discount){
+        int beforeDiscountTotal = searchItem(itemid).getUnitPrice()*Integer.parseInt(quantity);
+        int afterDiscountTotal = beforeDiscountTotal-(beforeDiscountTotal * Integer.parseInt(discount) / 100);
         try {
             Connection conn =DBConnection.getInstance().getConnection();
             PreparedStatement pst = conn.prepareStatement("insert into orders values (?,?,?,?)");
-            pst.setObject(1,order.getOrderId());
-            pst.setObject(2,order.getCusId());
-            pst.setObject(3,order.getDate());
-            pst.setObject(4,order.getTotal());
+            pst.setObject(1,orderid);
+            pst.setObject(2,customerid);
+            pst.setObject(3,date);
+            pst.setObject(4,afterDiscountTotal);
             pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -135,7 +137,7 @@ public ObservableList<Order> getAllOrders(){
         return OrderList;
     }
     /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    @Override
     public void addCustomerDetails(String customerId , String name, String address , String email){
         Customer customer = searchCustomer(customerId);
         if(customer==null){

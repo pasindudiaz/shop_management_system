@@ -55,13 +55,12 @@ public class OrderFormController implements Initializable {
     }
 
     public void addOrder(ActionEvent actionEvent) {
-        int beforeDiscountTotal = orderController.searchItem(itemid.getText()).getUnitPrice()*Integer.parseInt(quantity.getText());
-        int afterDiscountTotal = beforeDiscountTotal-(beforeDiscountTotal * Integer.parseInt(discount.getText()) / 100);
+//        int beforeDiscountTotal = orderController.searchItem(itemid.getText()).getUnitPrice()*Integer.parseInt(quantity.getText());
+//        int afterDiscountTotal = beforeDiscountTotal-(beforeDiscountTotal * Integer.parseInt(discount.getText()) / 100);
 
         orderController.addCustomerDetails(customerid.getText(),name.getText(),address.getText(),email.getText());
-        orderController.addOrder(new Order(orderid.getText(),customerid.getText(), String.valueOf(date.getValue()),afterDiscountTotal));
+        orderController.addOrder(orderid.getText(),customerid.getText(), String.valueOf(date.getValue()),itemid.getText(),quantity.getText(),discount.getText());
         orderController.addOrderDetails(new OrderDetails(orderid.getText(),itemid.getText(),Integer.parseInt(quantity.getText()),Integer.parseInt(discount.getText())));
-
         orderController.updateQuantity(Integer.parseInt(quantity.getText()),itemid.getText());
 
         tblview.setItems(orderController.getAllOrders());

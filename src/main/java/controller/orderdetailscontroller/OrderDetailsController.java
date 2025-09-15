@@ -39,7 +39,7 @@ public class OrderDetailsController implements OrderDetailsserviceController {
         Connection conn = null;
         try {
             conn = DBConnection.getInstance().getConnection();
-            PreparedStatement pst = conn.prepareStatement("delete from order_details where order_id = ?;");
+            PreparedStatement pst = conn.prepareStatement("delete from orders where order_id = ?;");
             pst.setObject(1,orderid);
             pst.executeUpdate();
         } catch (SQLException e) {
