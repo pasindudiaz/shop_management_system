@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="590.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.orderdetailscontroller.OrderDetailsFormController">
-   <Label layoutX="118.0" layoutY="39.0" text="Order Details Management System">
+   <Label alignment="CENTER" layoutX="170.0" layoutY="41.0" text="Order Details Management ">
       <font>
          <Font size="24.0" />
       </font>
