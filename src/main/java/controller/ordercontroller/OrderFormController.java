@@ -47,11 +47,10 @@ public class OrderFormController implements Initializable {
         itemid.setText(null);
         quantity.setText(null);
         discount.setText(null);
-        customerid.setText(null);
+        date.setValue(null);
         name.setText(null);
         address.setText(null);
         email.setText(null);
-        date.setValue(null);
 
     }
 
@@ -59,10 +58,12 @@ public class OrderFormController implements Initializable {
         int beforeDiscountTotal = orderController.searchItem(itemid.getText()).getUnitPrice()*Integer.parseInt(quantity.getText());
         int afterDiscountTotal = beforeDiscountTotal-(beforeDiscountTotal * Integer.parseInt(discount.getText()) / 100);
 
+        orderController.addCustomerDetails(customerid.getText(),name.getText(),address.getText(),email.getText());
         orderController.addOrder(new Order(orderid.getText(),customerid.getText(), String.valueOf(date.getValue()),afterDiscountTotal));
         orderController.addOrderDetails(new OrderDetails(orderid.getText(),itemid.getText(),Integer.parseInt(quantity.getText()),Integer.parseInt(discount.getText())));
 
         orderController.updateQuantity(Integer.parseInt(quantity.getText()),itemid.getText());
+
         tblview.setItems(orderController.getAllOrders());
 
     }
