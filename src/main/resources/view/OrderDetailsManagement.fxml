@@ -8,49 +8,45 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="590.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.orderdetailscontroller.OrderDetailsFormController">
+<AnchorPane prefHeight="590.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.orderdetailscontroller.OrderDetailsFormController">
    <Label layoutX="118.0" layoutY="39.0" text="Order Details Management System">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
    <Label layoutX="82.0" layoutY="102.0" text="OrderID">
       <font>
-         <Font name="Arial Rounded MT Bold" size="18.0"/>
+         <Font name="Arial Rounded MT Bold" size="18.0" />
       </font>
    </Label>
    <Label layoutX="80.0" layoutY="134.0" text="Item ID">
       <font>
-         <Font name="Arial Rounded MT Bold" size="18.0"/>
+         <Font name="Arial Rounded MT Bold" size="18.0" />
       </font>
    </Label>
-   <Label layoutX="51.0" layoutY="163.0"/>
+   <Label layoutX="51.0" layoutY="163.0" />
    <Label layoutX="78.0" layoutY="202.0" text="Discount">
       <font>
-         <Font name="Arial Rounded MT Bold" size="18.0"/>
+         <Font name="Arial Rounded MT Bold" size="18.0" />
       </font>
    </Label>
-   <TextField fx:id="itemid" layoutX="165.0" layoutY="132.0" prefHeight="26.0" prefWidth="186.0"/>
-   <TextField fx:id="quantity" layoutX="165.0" layoutY="167.0" prefHeight="26.0" prefWidth="186.0"/>
-   <TextField fx:id="discount" layoutX="165.0" layoutY="200.0" prefHeight="26.0" prefWidth="186.0"/>
-   <TextField fx:id="orderid" layoutX="165.0" layoutY="100.0" prefHeight="26.0" prefWidth="186.0"/>
+   <TextField fx:id="itemid" layoutX="165.0" layoutY="132.0" prefHeight="26.0" prefWidth="186.0" />
+   <TextField fx:id="quantity" layoutX="165.0" layoutY="167.0" prefHeight="26.0" prefWidth="186.0" />
+   <TextField fx:id="discount" layoutX="165.0" layoutY="200.0" prefHeight="26.0" prefWidth="186.0" />
+   <TextField fx:id="orderid" layoutX="165.0" layoutY="100.0" prefHeight="26.0" prefWidth="186.0" />
    <Label layoutX="81.0" layoutY="169.0" text="Quantity">
       <font>
-         <Font name="Arial Rounded MT Bold" size="18.0"/>
+         <Font name="Arial Rounded MT Bold" size="18.0" />
       </font>
    </Label>
-   <Button layoutX="384.0" layoutY="100.0" mnemonicParsing="false" onAction="#updateOrderDetails" prefHeight="26.0"
-           prefWidth="128.0" text="UPDATE"/>
-   <Button layoutX="384.0" layoutY="132.0" mnemonicParsing="false" onAction="#DeleteOrderDetails" prefHeight="26.0"
-           prefWidth="128.0" text="DELETE"/>
+   <Button layoutX="384.0" layoutY="100.0" mnemonicParsing="false" onAction="#updateOrderDetails" prefHeight="26.0" prefWidth="128.0" text="UPDATE" />
+   <Button layoutX="384.0" layoutY="132.0" mnemonicParsing="false" onAction="#DeleteOrderDetails" prefHeight="26.0" prefWidth="128.0" text="DELETE" />
    <TableView fx:id="tblview" layoutX="69.0" layoutY="257.0" prefHeight="296.0" prefWidth="496.0">
       <columns>
-         <TableColumn fx:id="colorderid" prefWidth="120.00000762939453" text="OrderID"/>
-         <TableColumn fx:id="colitemid" prefWidth="121.5999755859375" text="Item ID"/>
-         <TableColumn fx:id="colquantity" prefWidth="123.20001220703125" text="Quantity"/>
-         <TableColumn fx:id="coldiscount" prefWidth="131.19998168945312" text="Discount"/>
+         <TableColumn fx:id="colorderid" prefWidth="120.00000762939453" text="OrderID" />
+         <TableColumn fx:id="colitemid" prefWidth="121.5999755859375" text="Item ID" />
+         <TableColumn fx:id="colquantity" prefWidth="123.20001220703125" text="Quantity" />
+         <TableColumn fx:id="coldiscount" prefWidth="131.19998168945312" text="Discount" />
       </columns>
    </TableView>
 </AnchorPane>

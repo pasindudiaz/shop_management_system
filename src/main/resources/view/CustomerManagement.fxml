@@ -10,26 +10,26 @@
 
 <AnchorPane prefHeight="560.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customercontroller.CustomerFormController">
    <children>
-      <TextField fx:id="cusid" layoutX="171.0" layoutY="68.0" prefHeight="26.0" prefWidth="198.0" />
-      <TextField fx:id="cusname" layoutX="171.0" layoutY="105.0" prefHeight="26.0" prefWidth="198.0" />
-      <TextField fx:id="cusaddress" layoutX="171.0" layoutY="141.0" prefHeight="26.0" prefWidth="198.0" />
-      <TextField fx:id="cusemail" layoutX="171.0" layoutY="179.0" prefHeight="26.0" prefWidth="198.0" />
-      <Label layoutX="38.0" layoutY="67.0" prefHeight="28.0" prefWidth="150.0" text="Customer ID">
+      <TextField fx:id="cusid" layoutX="209.0" layoutY="68.0" prefHeight="26.0" prefWidth="198.0" />
+      <TextField fx:id="cusname" layoutX="209.0" layoutY="105.0" prefHeight="26.0" prefWidth="198.0" />
+      <TextField fx:id="cusaddress" layoutX="209.0" layoutY="141.0" prefHeight="26.0" prefWidth="198.0" />
+      <TextField fx:id="cusemail" layoutX="209.0" layoutY="179.0" prefHeight="26.0" prefWidth="198.0" />
+      <Label layoutX="82.0" layoutY="67.0" prefHeight="28.0" prefWidth="121.0" text="Customer ID">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="107.0" prefHeight="18.0" prefWidth="58.0" text=" Name">
+      <Label layoutX="82.0" layoutY="107.0" prefHeight="18.0" prefWidth="58.0" text=" Name">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="143.0" prefHeight="22.0" prefWidth="86.0" text="Address">
+      <Label layoutX="85.0" layoutY="143.0" prefHeight="22.0" prefWidth="86.0" text="Address">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="181.0" prefHeight="18.0" prefWidth="58.0" text="Email">
+      <Label layoutX="85.0" layoutY="181.0" prefHeight="18.0" prefWidth="58.0" text="Email">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
@@ -47,9 +47,9 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button layoutX="413.0" layoutY="68.0" mnemonicParsing="false" onAction="#AddCustomer" prefHeight="26.0" prefWidth="86.0" text="ADD" />
-      <Button layoutX="413.0" layoutY="105.0" mnemonicParsing="false" onAction="#UpdateCustomer" prefHeight="26.0" prefWidth="86.0" text="UPDATE" />
-      <Button layoutX="413.0" layoutY="141.0" mnemonicParsing="false" onAction="#DeleteCustomer" prefHeight="26.0" prefWidth="86.0" text="DELETE" />
-      <Button layoutX="413.0" layoutY="179.0" mnemonicParsing="false" onAction="#ClearCustomer" prefHeight="26.0" prefWidth="86.0" text="CLEAR" />
+      <Button layoutX="439.0" layoutY="68.0" mnemonicParsing="false" onAction="#AddCustomer" prefHeight="26.0" prefWidth="86.0" text="ADD" />
+      <Button layoutX="439.0" layoutY="105.0" mnemonicParsing="false" onAction="#UpdateCustomer" prefHeight="26.0" prefWidth="86.0" text="UPDATE" />
+      <Button layoutX="439.0" layoutY="141.0" mnemonicParsing="false" onAction="#DeleteCustomer" prefHeight="26.0" prefWidth="86.0" text="DELETE" />
+      <Button layoutX="439.0" layoutY="179.0" mnemonicParsing="false" onAction="#ClearCustomer" prefHeight="26.0" prefWidth="86.0" text="CLEAR" />
    </children>
 </AnchorPane>
