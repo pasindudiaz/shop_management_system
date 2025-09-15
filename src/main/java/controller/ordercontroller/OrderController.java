@@ -135,4 +135,23 @@ public ObservableList<Order> getAllOrders(){
         return OrderList;
     }
     /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void addCustomerDetails(String customerId , String name, String address , String email){
+        Customer customer = searchCustomer(customerId);
+        if(customer==null){
+            try {
+                Connection con = DBConnection.getInstance().getConnection();
+                PreparedStatement pst = con.prepareStatement("insert into customer values(?,?,?,?);");
+                pst.setObject(1,customerId);
+                pst.setObject(2,name);
+                pst.setObject(3,address);
+                pst.setObject(4,email);
+                pst.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+
 }
