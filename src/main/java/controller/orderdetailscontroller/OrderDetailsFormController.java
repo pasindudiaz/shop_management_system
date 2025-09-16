@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class OrderDetailsFormController implements Initializable {
     OrderDetailsController orderDetailsController = new OrderDetailsController();
 
-    public TableView<OrderDetails> tblview;
+    private TableView<OrderDetails> tblview;
     @FXML
     private TableColumn<?, ?> coldiscount;
 
@@ -41,15 +41,15 @@ public class OrderDetailsFormController implements Initializable {
     private TextField quantity;
 
     @FXML
-    void DeleteOrderDetails(ActionEvent event) {
+    void deleteOrderDetails(ActionEvent event) {
         orderDetailsController.deleteOrderDetails(orderid.getText());
-        tblview.setItems(orderDetailsController.getAllOrderDetails());
+        getTblview().setItems(orderDetailsController.getAllOrderDetails());
     }
 
     @FXML
     void updateOrderDetails(ActionEvent event) {
         orderDetailsController.updateOrderDetails(Integer.parseInt(quantity.getText()),Integer.parseInt(discount.getText()),orderid.getText());
-        tblview.setItems(orderDetailsController.getAllOrderDetails());
+        getTblview().setItems(orderDetailsController.getAllOrderDetails());
 
 
     }
@@ -60,9 +60,9 @@ public class OrderDetailsFormController implements Initializable {
         colitemid.setCellValueFactory(new PropertyValueFactory<>("itemId"));
         colquantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         coldiscount.setCellValueFactory(new  PropertyValueFactory<>("discount"));
-        tblview.setItems(orderDetailsController.getAllOrderDetails());
+        getTblview().setItems(orderDetailsController.getAllOrderDetails());
 
-        tblview.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+        getTblview().getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) -> {
             if(t1!=null){
                 itemid.setText(t1.getItemId());
                 orderid.setText(t1.getOrderId());
@@ -73,5 +73,13 @@ public class OrderDetailsFormController implements Initializable {
         ));
 
 
+    }
+
+    public TableView<OrderDetails> getTblview() {
+        return tblview;
+    }
+
+    public void setTblview(TableView<OrderDetails> tblview) {
+        this.tblview = tblview;
     }
 }
