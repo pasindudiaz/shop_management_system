@@ -48,7 +48,7 @@ public class OrderDetailsFormController implements Initializable {
 
     @FXML
     void updateOrderDetails(ActionEvent event) {
-        orderDetailsController.updateOrderDetails(Integer.parseInt(quantity.getText()),Integer.parseInt(discount.getText()),orderid.getText());
+        orderDetailsController.updateOrderDetails(Integer.parseInt(quantity.getText()), Integer.parseInt(discount.getText()), orderid.getText(), itemid.getText());
         tblview.setItems(orderDetailsController.getAllOrderDetails());
 
 

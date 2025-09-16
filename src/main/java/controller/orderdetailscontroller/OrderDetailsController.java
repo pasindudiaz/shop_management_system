@@ -3,6 +3,7 @@ package controller.orderdetailscontroller;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.Item;
 import model.OrderDetails;
 
 import java.sql.Connection;
@@ -46,18 +47,98 @@ public class OrderDetailsController implements OrderDetailsserviceController {
         }
     }
 
+
     @Override
-    public void updateOrderDetails(Integer quantity, Integer discount,String orderid){
+    public void updateOrderDetails(Integer newquantity, Integer discount, String orderid, String itemid) {
+        Integer oldQuantity = searchOrderDetails(orderid).getQuantity();
+        if (oldQuantity < newquantity) {
+            Integer higherValue = newquantity - oldQuantity;
+            updateHigherItemQuantity(higherValue, itemid);
+        } else {
+            Integer lowValue = oldQuantity - newquantity;
+            updateLowerItemQuantity(lowValue, itemid);
+        }
         try {
             Connection conn = DBConnection.getInstance().getConnection();
             PreparedStatement pst = conn.prepareStatement("update order_details set quantity = ? , discount = ? where order_id=?;");
-            pst.setObject(1,quantity);
-            pst.setObject(2,discount);
-            pst.setObject(3,orderid);
+            pst.setObject(1, newquantity);
+            pst.setObject(2, discount);
+            pst.setObject(3, orderid);
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
     }
+
+    @Override
+    public OrderDetails searchOrderDetails(String orderId) {
+        Connection conn = null;
+        try {
+            conn = DBConnection.getInstance().getConnection();
+            PreparedStatement pst = conn.prepareStatement("select * from order_details where order_id =?;");
+            pst.setObject(1, orderId);
+            ResultSet resultset = pst.executeQuery();
+            OrderDetails orderDetails = null;
+            while (resultset.next()) {
+                orderDetails = new OrderDetails(
+                        resultset.getString("order_id"),
+                        resultset.getString("item_id"),
+                        resultset.getInt("quantity"),
+                        resultset.getInt("discount")
+                );
+            }
+            return orderDetails;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateHigherItemQuantity(Integer changeValue, String itemId) {
+        try {
+            Connection conn = DBConnection.getInstance().getConnection();
+            PreparedStatement pst = conn.prepareStatement("update item set quantity = ? where item_id = ? ;");
+            pst.setObject(1, getItemQuantity(itemId).getQuantity() - changeValue);
+            pst.setObject(2, itemId);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateLowerItemQuantity(Integer changeValue, String itemId) {
+        try {
+            Connection conn = DBConnection.getInstance().getConnection();
+            PreparedStatement pst = conn.prepareStatement("update item set quantity = ? where item_id = ? ;");
+            pst.setObject(1, getItemQuantity(itemId).getQuantity() + changeValue);
+            pst.setObject(2, itemId);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Item getItemQuantity(String itemId) {
+        Item item = null;
+        try {
+            Connection con = DBConnection.getInstance().getConnection();
+            PreparedStatement pst = con.prepareStatement("select * from item where item_id = ?;");
+            pst.setObject(1, itemId);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                item = new Item(
+                        resultSet.getString("item_id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("description"),
+                        resultSet.getInt("unit_price"),
+                        resultSet.getInt("quantity")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return item;
+    }
+
 }
