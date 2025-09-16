@@ -65,7 +65,7 @@ public class OrderController implements OrderServiceController {
     @Override
     public void addOrder( String orderid,String customerid, String date,String itemid,String quantity,String discount){
         int beforeDiscountTotal = searchItem(itemid).getUnitPrice()*Integer.parseInt(quantity);
-        int afterDiscountTotal = beforeDiscountTotal-(beforeDiscountTotal * Integer.parseInt(discount) / 100);
+        int afterDiscountTotal = (int) (beforeDiscountTotal - (beforeDiscountTotal * (Integer.parseInt(discount) / 100.0)));
         try {
             Connection conn =DBConnection.getInstance().getConnection();
             PreparedStatement pst = conn.prepareStatement("insert into orders values (?,?,?,?)");
