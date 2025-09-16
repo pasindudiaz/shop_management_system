@@ -58,6 +58,7 @@ public class OrderDetailsController implements OrderDetailsserviceController {
             Integer lowValue = oldQuantity - newquantity;
             updateLowerItemQuantity(lowValue, itemid);
         }
+        updateOrderTotal(orderid, itemid, newquantity, discount);
         try {
             Connection conn = DBConnection.getInstance().getConnection();
             PreparedStatement pst = conn.prepareStatement("update order_details set quantity = ? , discount = ? where order_id=?;");
@@ -107,6 +108,7 @@ public class OrderDetailsController implements OrderDetailsserviceController {
         }
     }
 
+    @Override
     public void updateLowerItemQuantity(Integer changeValue, String itemId) {
         try {
             Connection conn = DBConnection.getInstance().getConnection();
@@ -119,6 +121,7 @@ public class OrderDetailsController implements OrderDetailsserviceController {
         }
     }
 
+    @Override
     public Item getItemQuantity(String itemId) {
         Item item = null;
         try {
@@ -139,6 +142,21 @@ public class OrderDetailsController implements OrderDetailsserviceController {
             throw new RuntimeException(e);
         }
         return item;
+    }
+
+    @Override
+    public void updateOrderTotal(String orderId, String itemId, Integer quantity, Integer discount) {
+        Integer beforeDiscountTotal = getItemQuantity(itemId).getUnitPrice() * quantity;
+        Integer afterDiscountTotal = (int) (beforeDiscountTotal - (beforeDiscountTotal * (discount / 100.0)));
+        try {
+            Connection conn = DBConnection.getInstance().getConnection();
+            PreparedStatement pst = conn.prepareStatement("update orders set total=? where order_id = ?;");
+            pst.setObject(1, afterDiscountTotal);
+            pst.setObject(2, orderId);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
