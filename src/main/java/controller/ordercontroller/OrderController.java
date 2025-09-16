@@ -37,7 +37,7 @@ public class OrderController implements OrderServiceController {
         }
         return customer;
     }
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public Item searchItem(String itemId) {
         Item item = null;
@@ -61,7 +61,7 @@ public class OrderController implements OrderServiceController {
         return item;
 
     }
-    ///  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public void addOrder( String orderid,String customerid, String date,String itemid,String quantity,String discount){
         int beforeDiscountTotal = searchItem(itemid).getUnitPrice()*Integer.parseInt(quantity);
@@ -80,7 +80,7 @@ public class OrderController implements OrderServiceController {
         }
 
     }
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public void addOrderDetails(OrderDetails orderDetails){
         Connection conn = null;
@@ -96,8 +96,8 @@ public class OrderController implements OrderServiceController {
             throw new RuntimeException(e);
         }
     }
-    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////
-@Override
+
+    @Override
     public void  updateQuantity(Integer quantity,String itemId ){
         try {
             Connection conn =DBConnection.getInstance().getConnection();
@@ -111,9 +111,7 @@ public class OrderController implements OrderServiceController {
     }
 
 
-
-/// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@Override
+    @Override
 public ObservableList<Order> getAllOrders(){
         OrderList.clear();
         try {
@@ -135,7 +133,7 @@ public ObservableList<Order> getAllOrders(){
         }
         return OrderList;
     }
-    /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public void addCustomerDetails(String customerId , String name, String address , String email){
         Customer customer = searchCustomer(customerId);
