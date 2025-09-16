@@ -6,7 +6,7 @@
 <AnchorPane prefHeight="590.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.orderdetailscontroller.OrderDetailsFormController">
    <Label alignment="CENTER" layoutX="170.0" layoutY="41.0" text="Order Details Management ">
       <font>
-         <Font size="24.0" />
+          <Font name="System Bold" size="24.0"/>
       </font>
    </Label>
    <Label layoutX="82.0" layoutY="102.0" text="OrderID">
