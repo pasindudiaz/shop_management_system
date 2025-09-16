@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.*?>
 <AnchorPane prefHeight="590.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.orderdetailscontroller.OrderDetailsFormController">
    <Label alignment="CENTER" layoutX="170.0" layoutY="41.0" text="Order Details Management ">
       <font>
@@ -40,7 +35,8 @@
       </font>
    </Label>
    <Button layoutX="384.0" layoutY="100.0" mnemonicParsing="false" onAction="#updateOrderDetails" prefHeight="26.0" prefWidth="128.0" text="UPDATE" />
-   <Button layoutX="384.0" layoutY="132.0" mnemonicParsing="false" onAction="#DeleteOrderDetails" prefHeight="26.0" prefWidth="128.0" text="DELETE" />
+    <Button layoutX="384.0" layoutY="132.0" mnemonicParsing="false" onAction="#deleteOrderDetails" prefHeight="26.0"
+            prefWidth="128.0" text="DELETE"/>
    <TableView fx:id="tblview" layoutX="69.0" layoutY="257.0" prefHeight="296.0" prefWidth="496.0">
       <columns>
          <TableColumn fx:id="colorderid" prefWidth="120.00000762939453" text="OrderID" />
