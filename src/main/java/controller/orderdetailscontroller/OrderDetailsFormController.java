@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class OrderDetailsFormController implements Initializable {
-    OrderDetailsController orderDetailsController = new OrderDetailsController();
+    OrderDetailsserviceController orderDetailsserviceController = new OrderDetailsController();
 
     public TableView<OrderDetails> tblview;
     @FXML
@@ -42,14 +42,14 @@ public class OrderDetailsFormController implements Initializable {
 
     @FXML
     void deleteOrderDetails(ActionEvent event) {
-        orderDetailsController.deleteOrderDetails(orderid.getText());
-        tblview.setItems(orderDetailsController.getAllOrderDetails());
+        orderDetailsserviceController.deleteOrderDetails(orderid.getText());
+        tblview.setItems(orderDetailsserviceController.getAllOrderDetails());
     }
 
     @FXML
     void updateOrderDetails(ActionEvent event) {
-        orderDetailsController.updateOrderDetails(Integer.parseInt(quantity.getText()), Integer.parseInt(discount.getText()), orderid.getText(), itemid.getText());
-        tblview.setItems(orderDetailsController.getAllOrderDetails());
+        orderDetailsserviceController.updateOrderDetails(Integer.parseInt(quantity.getText()), Integer.parseInt(discount.getText()), orderid.getText(), itemid.getText());
+        tblview.setItems(orderDetailsserviceController.getAllOrderDetails());
 
 
     }
@@ -60,7 +60,7 @@ public class OrderDetailsFormController implements Initializable {
         colitemid.setCellValueFactory(new PropertyValueFactory<>("itemId"));
         colquantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         coldiscount.setCellValueFactory(new  PropertyValueFactory<>("discount"));
-        tblview.setItems(orderDetailsController.getAllOrderDetails());
+        tblview.setItems(orderDetailsserviceController.getAllOrderDetails());
 
         tblview.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) -> {
             if(t1!=null){

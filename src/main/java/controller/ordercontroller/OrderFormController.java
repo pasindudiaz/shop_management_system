@@ -25,7 +25,7 @@ public class OrderFormController implements Initializable {
     public TableColumn coltotal;
     public TableView<Order> tblview;
     public DatePicker date;
-    OrderController orderController = new OrderController();
+    OrderServiceController orderServiceController = new OrderController();
 
     public TextField email;
     public TextField address;
@@ -33,7 +33,7 @@ public class OrderFormController implements Initializable {
     public TextField customerid;
 
     public void searchCustomer(ActionEvent actionEvent) {
-        Customer customer = orderController.searchCustomer(customerid.getText());
+        Customer customer = orderServiceController.searchCustomer(customerid.getText());
         clearOrder(null);
         customerid.setText(customer.getCusId());
         name.setText(customer.getName());
@@ -55,12 +55,12 @@ public class OrderFormController implements Initializable {
     }
 
     public void addOrder(ActionEvent actionEvent) {
-        orderController.addCustomerDetails(customerid.getText(),name.getText(),address.getText(),email.getText());
-        orderController.addOrder(orderid.getText(),customerid.getText(), String.valueOf(date.getValue()),itemid.getText(),quantity.getText(),discount.getText());
-        orderController.addOrderDetails(new OrderDetails(orderid.getText(),itemid.getText(),Integer.parseInt(quantity.getText()),Integer.parseInt(discount.getText())));
-        orderController.updateQuantity(Integer.parseInt(quantity.getText()),itemid.getText());
+        orderServiceController.addCustomerDetails(customerid.getText(), name.getText(), address.getText(), email.getText());
+        orderServiceController.addOrder(orderid.getText(), customerid.getText(), String.valueOf(date.getValue()), itemid.getText(), quantity.getText(), discount.getText());
+        orderServiceController.addOrderDetails(new OrderDetails(orderid.getText(), itemid.getText(), Integer.parseInt(quantity.getText()), Integer.parseInt(discount.getText())));
+        orderServiceController.updateQuantity(Integer.parseInt(quantity.getText()), itemid.getText());
 
-        tblview.setItems(orderController.getAllOrders());
+        tblview.setItems(orderServiceController.getAllOrders());
 
     }
 
@@ -70,7 +70,7 @@ public class OrderFormController implements Initializable {
         colcustomerid.setCellValueFactory(new PropertyValueFactory<>("cusId"));
         colorderdate.setCellValueFactory(new PropertyValueFactory<>("date"));
         coltotal.setCellValueFactory(new PropertyValueFactory<>("total"));
-        tblview.setItems(orderController.getAllOrders());
+        tblview.setItems(orderServiceController.getAllOrders());
 
 
     }

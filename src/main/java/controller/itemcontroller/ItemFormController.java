@@ -1,18 +1,18 @@
 package controller.itemcontroller;
 
-import javafx.fxml.Initializable;
-import javafx.scene.control.cell.PropertyValueFactory;
-import model.Item;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Item;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
-    ItemController itemController = new ItemController();
+    ItemServiceController itemServiceController = new ItemController();
 
     public TextField itemid;
     public TextField name;
@@ -28,19 +28,19 @@ public class ItemFormController implements Initializable {
     public TableColumn colquantity;
 
     public void addItem(ActionEvent actionEvent) {
-        itemController.addItem(new Item(itemid.getText(),name.getText(),description.getText(),Integer.parseInt(unitprice.getText()),Integer.parseInt(quantity.getText())));
-        tblview.setItems(itemController.getALLItemDetails());
+        itemServiceController.addItem(new Item(itemid.getText(), name.getText(), description.getText(), Integer.parseInt(unitprice.getText()), Integer.parseInt(quantity.getText())));
+        tblview.setItems(itemServiceController.getALLItemDetails());
     }
 
     public void updateItem(ActionEvent actionEvent) {
-        itemController.updateItem(itemid.getText(),name.getText(),description.getText(),unitprice.getText(),quantity.getText());
-        tblview.setItems(itemController.getALLItemDetails());
+        itemServiceController.updateItem(itemid.getText(), name.getText(), description.getText(), unitprice.getText(), quantity.getText());
+        tblview.setItems(itemServiceController.getALLItemDetails());
     }
 
     public void deleteItem(ActionEvent actionEvent) {
-        itemController.deleteItem(itemid.getText());
+        itemServiceController.deleteItem(itemid.getText());
         clearItem(null);
-        tblview.setItems(itemController.getALLItemDetails());
+        tblview.setItems(itemServiceController.getALLItemDetails());
     }
 
     public void clearItem(ActionEvent actionEvent) {
@@ -58,7 +58,7 @@ public class ItemFormController implements Initializable {
         colitemdescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colunitprice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colquantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        tblview.setItems(itemController.getALLItemDetails());
+        tblview.setItems(itemServiceController.getALLItemDetails());
 
         tblview.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
             if(t1!=null){

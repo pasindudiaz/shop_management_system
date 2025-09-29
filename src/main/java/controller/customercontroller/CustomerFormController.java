@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 
 public class CustomerFormController implements Initializable {
-    CustomerController customerController = new CustomerController();
+    CustomerServiceController customerServiceController = new CustomerController();
 
     public TableColumn colname;
     public TableColumn coladdress;
@@ -28,19 +28,19 @@ public class CustomerFormController implements Initializable {
     public TextField cusemail;
 
     public void AddCustomer(ActionEvent actionEvent) {
-        customerController.addCustomer(new Customer(cusid.getText(), cusname.getText(), cusaddress.getText(), cusemail.getText()));
-        tblview.setItems(customerController.getAllCustomerDetails());
+        customerServiceController.addCustomer(new Customer(cusid.getText(), cusname.getText(), cusaddress.getText(), cusemail.getText()));
+        tblview.setItems(customerServiceController.getAllCustomerDetails());
     }
 
     public void UpdateCustomer(ActionEvent actionEvent) {
-        customerController.updateCustomer(cusid.getText(),cusname.getText(),cusaddress.getText(),cusemail.getText());
-        tblview.setItems(customerController.getAllCustomerDetails());
+        customerServiceController.updateCustomer(cusid.getText(), cusname.getText(), cusaddress.getText(), cusemail.getText());
+        tblview.setItems(customerServiceController.getAllCustomerDetails());
     }
 
     public void DeleteCustomer(ActionEvent actionEvent) {
-        customerController.deleteCustomer(cusid.getText());
+        customerServiceController.deleteCustomer(cusid.getText());
         ClearCustomer(null);
-        tblview.setItems(customerController.getAllCustomerDetails());
+        tblview.setItems(customerServiceController.getAllCustomerDetails());
     }
 
     public void ClearCustomer(ActionEvent actionEvent) {
@@ -57,7 +57,7 @@ public class CustomerFormController implements Initializable {
         coladdress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colemail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        tblview.setItems(customerController.getAllCustomerDetails());
+        tblview.setItems(customerServiceController.getAllCustomerDetails());
 
         tblview.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
             if(t1!=null){
